@@ -50,14 +50,14 @@ Understanding architecture ensures you write robust, maintainable tests
 Folder & File Structure
 
 Typical Playwright project:
-
+```
 project-root/
 ├── tests/             # Test files
 ├── tests/example.spec.js
 ├── playwright.config.js  # Main configuration file
 ├── package.json
 └── node_modules/
-
+```
 ```
 tests/: Store test files
 
