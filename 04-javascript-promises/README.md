@@ -56,16 +56,17 @@ async function runExample() {
     console.log(error);
   }
 }
+``` 
 How Playwright Uses Promises
 
 Every Playwright action returns a Promise.
 
 Examples:
-
+``` 
 await page.goto("https://example.com");
 await page.click("#login");
 await page.fill("#username", "Iqra");
-
+``` 
 
 await ensures that each action completes before the next one starts.
 
