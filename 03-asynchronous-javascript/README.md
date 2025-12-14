@@ -34,86 +34,65 @@ console.log("Step 2");
 - Task result is handled later
 
 Example:
-
+```
 startTask();
 console.log("Next step");
 
-What is async?
-
-async is a keyword used before a function to indicate that the function will perform asynchronous operations.
-
-An async function always returns a Promise.
-
 Example:
 
-async function runTest() {
-  console.log("Test started");
-}
+loadPageAsync();
+clickButton();
+```
+🔹 Async/Await Keywords
+async
 
-What is await?
+Marks a function as asynchronous
 
-await is used inside an async function.
-It pauses execution until the asynchronous operation completes.
+Allows use of await inside it
 
-Example:
+await
 
-await loadPage();
+Pauses execution inside the async function
 
-Simple async/await Example
+Waits until the asynchronous task completes
+```
+🔹 Simple Example
 async function example() {
-  console.log("Start");
-  await waitForAction();
-  console.log("End");
+  await loadPage();
+  console.log("Page loaded");
 }
+```
 
+Here:
 
-Execution order:
+loadPage() takes time
 
-Start
+await waits for it
 
-waitForAction completes
+Next line runs only after completion
 
-End
+🔹 Why Async/Await is Mandatory in Playwright
 
-Why async/await is Mandatory in Playwright
+Playwright actions are asynchronous:
 
-All Playwright actions are asynchronous:
+page.goto() waits for navigation
 
-Page navigation
+page.click() waits for element readiness
 
-Element interactions
+page.fill() waits for input action
 
-Waiting for elements
+API requests wait for server response
 
-API requests
-
-Using async/await ensures:
-
-Correct execution order
-
-Stable tests
-
-Reduced flakiness
+Without await, tests become flaky and unreliable.
 
 Example:
 
-test('login test', async ({ page }) => {
-  await page.goto('https://example.com');
-  await page.click('#login');
-});
+await page.goto("https://example.com");
+await page.click("#login");
 
-Common Mistakes
+🔹 Interview Tip
 
-Forgetting to use await
+Q: Why do we use async/await in Playwright?
+A: Because browser interactions and network operations are asynchronous, and async/await ensures proper execution order and stable test execution.
 
-Calling async functions without waiting
 
-Mixing synchronous and asynchronous logic incorrectly
-
-Interview Notes
-
-JavaScript is single-threaded but supports async operations
-
-async/await simplifies promise-based code
-
-Playwright relies heavily on async/await for browser interactions
