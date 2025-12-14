@@ -28,7 +28,7 @@ Example:
 ```js
 console.log("Step 1");
 console.log("Step 2");
-
+```
 Asynchronous Concept (Introduction)
 
 Some operations take time, such as:
