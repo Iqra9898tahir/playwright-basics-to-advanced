@@ -79,18 +79,26 @@ reports/ → Screenshots, videos, or HTML reports
 utils/ → Helper functions used across tests
 
 Configuration Highlights
-// playwright.config.js
+```
 import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
-  timeout: 30000,
-  retries: 1,
+  timeout: 30000,        // Test timeout
+  retries: 1,            // Retry failed tests
   use: {
-    headless: true,
+    headless: true,      // Run tests without UI
     viewport: { width: 1280, height: 720 },
     screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
   },
+  reporter: [['list'], ['html', { outputFolder: 'reports' }]],
+  projects: [
+    { name: 'chromium', use: { browserName: 'chromium' } },
+    { name: 'firefox', use: { browserName: 'firefox' } },
+    { name: 'webkit', use: { browserName: 'webkit' } },
+  ],
 });
+
 ```
 
 Sets timeouts, retries, headless mode, viewport size, screenshots
