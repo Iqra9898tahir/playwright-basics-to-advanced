@@ -26,6 +26,7 @@ Example:
 ```js
 console.log("Step 1");
 console.log("Step 2");
+```
 
 ### Asynchronous
 - Long-running tasks start
