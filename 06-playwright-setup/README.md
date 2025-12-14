@@ -99,11 +99,19 @@ export default defineConfig({
   ],
 });
 
+
 ```
+Explanation of key options:
 
-Sets timeouts, retries, headless mode, viewport size, screenshots
+timeout → Max duration for each test
 
-Can configure parallelism, test match patterns, and reporters
+retries → Number of retries on failure
+
+use → Global options for all tests
+
+reporter → Test reporting options
+
+projects → Cross-browser testing configurations
 
 Interview Questions (with Answers)
 
