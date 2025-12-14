@@ -39,26 +39,44 @@ Some operations take time, such as:
 
 Page loading
 
-API calls
+Network requests (API calls)
 
-File operations
+File system operations
 
-JavaScript handles these using asynchronous programming so the program does not freeze.
+JavaScript uses asynchronous mechanisms so that long-running tasks do not freeze the program.
 
-(Details covered in next topic)
+Detailed async concepts are covered in later sections.
 
-Why This Matters in Automation
+Playwright Relevance
 
-Browser actions take time
+In Playwright:
 
-Network calls are slow
+Browser interactions are asynchronous
 
-Automation scripts must wait correctly
+Page loads and element actions take time
 
-This is why async/await is used in Playwright
+Tests must wait correctly for actions to complete
 
-Interview Notes
+Because of this, Playwright relies heavily on:
 
-JavaScript is single-threaded but supports asynchronous operations
+async
 
-Playwright automation scripts rely heavily on async/await
+await
+
+Without understanding JavaScript basics, Playwright scripts become unreliable.
+
+Interview Questions (with Answers)
+1. Is JavaScript synchronous or asynchronous?
+
+Answer:
+JavaScript is synchronous by default but supports asynchronous operations using callbacks, promises, and async/await.
+
+2. Why is JavaScript called single-threaded?
+
+Answer:
+JavaScript executes code on a single main thread, meaning it processes one task at a time. Asynchronous operations are handled using the event loop.
+
+3. Why is async/await important in Playwright?
+
+Answer:
+Browser actions take time. Async/await ensures Playwright waits for actions like page load, element visibility, and network responses before continuing execution.
