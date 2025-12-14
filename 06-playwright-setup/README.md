@@ -52,20 +52,31 @@ Folder & File Structure
 Typical Playwright project:
 ```
 project-root/
-├── tests/             # Test files
-├── tests/example.spec.js
-├── playwright.config.js  # Main configuration file
-├── package.json
-└── node_modules/
+├── tests/                  # Your test files (e.g., *.spec.js)
+├── pages/                  # Optional: Page Object Model classes
+├── playwright.config.js    # Main configuration file
+├── package.json            # Node project dependencies
+├── node_modules/           # Installed packages
+├── reports/                # Optional: Test reports/screenshots
+├── utils/                  # Optional: Utility/helper functions
+
 ```
 ```
-tests/: Store test files
+Purpose of each folder/file:
 
-playwright.config.js: Test runner config (timeouts, browsers, retries, reporters)
+tests/ → Store test scripts
 
-package.json: Node dependencies
+pages/ → Encapsulate page-specific logic in POM
 
-node_modules/: Installed packages
+playwright.config.js → Define global test runner settings (browsers, timeouts, retries, reporters, headless)
+
+package.json → Node dependencies for Playwright and testing
+
+node_modules/ → Installed Node packages
+
+reports/ → Screenshots, videos, or HTML reports
+
+utils/ → Helper functions used across tests
 
 Configuration Highlights
 // playwright.config.js
