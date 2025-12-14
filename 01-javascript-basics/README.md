@@ -29,38 +29,32 @@ Example:
 console.log("Step 1");
 console.log("Step 2");
 
-Arrow Functions
+Asynchronous Concept (Introduction)
 
-Arrow functions are a shorter syntax for writing functions in JavaScript.
+Some operations take time, such as:
 
-Example:
+Page loading
 
-const greetUser = (name) => {
-  console.log("Hello " + name);
-};
+API calls
 
-Why Playwright Uses Arrow Functions
+File operations
 
-Cleaner syntax
+JavaScript handles these using asynchronous programming so the program does not freeze.
 
-Better readability
+(Details covered in next topic)
 
-Works well with async/await
+Why This Matters in Automation
 
-Common in modern JavaScript frameworks
+Browser actions take time
 
-Functions in Playwright Tests
+Network calls are slow
 
-Playwright test structure uses arrow functions:
+Automation scripts must wait correctly
 
-test('sample test', async ({ page }) => {
-  await page.goto('https://example.com');
-});
+This is why async/await is used in Playwright
 
 Interview Notes
 
-Functions help reuse code
+JavaScript is single-threaded but supports asynchronous operations
 
-Arrow functions provide shorter syntax
-
-Playwright tests commonly use arrow functions with async/await
+Playwright automation scripts rely heavily on async/await
