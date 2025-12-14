@@ -19,17 +19,17 @@ Functions help avoid code repetition and make programs easier to maintain.
 function greetUser(name) {
   console.log("Hello " + name);
 }
-
+```
 Arrow Functions
 
 Arrow functions are a shorter syntax for writing functions in JavaScript.
 
 Example:
-
+```
 const greetUser = (name) => {
   console.log("Hello " + name);
 };
-
+```
 Why Playwright Uses Arrow Functions
 
 Cleaner syntax
@@ -43,11 +43,11 @@ Common in modern JavaScript frameworks
 Functions in Playwright Tests
 
 Playwright test structure uses arrow functions:
-
+```
 test('sample test', async ({ page }) => {
   await page.goto('https://example.com');
 });
-
+```
 Interview Notes
 
 Functions help reuse code
