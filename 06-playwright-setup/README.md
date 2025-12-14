@@ -114,3 +114,32 @@ npx playwright install
 
 How do you configure Playwright tests?
 Answer: Through playwright.config.js, setting timeouts, retries, browsers, headless mode, viewport size, and reporters.
+
+Fixtures in Playwright
+What is it?
+
+A fixture is a reusable piece of setup code that provides resources (like a browser, page, or API context) to your tests.
+
+Think of it as preparing the environment your test will run in.
+
+Why do we need it?
+
+Ensures consistent test environments
+
+Reduces repetition in test setup
+
+Handles resources automatically, like opening/closing browsers or pages
+
+Supports dependency injection into test functions
+
+How it works?
+
+Playwright Test Runner uses fixtures internally for core objects:
+
+browser → Provides a browser instance
+
+context → Provides a browser context (like a fresh session)
+
+page → Provides a page inside the context
+
+These are automatically available to your test when you declare them in the test callback:
