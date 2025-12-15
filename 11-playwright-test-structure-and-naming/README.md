@@ -23,7 +23,7 @@ tests
 ├── settings
 │   └── settings.spec.js
 ---
-```js
+```
 ## Test File Naming Convention
 - Use `.spec.js` suffix
 - Name files based on feature
@@ -46,7 +46,7 @@ Test names should describe **user behavior**, not implementation.
 test('user can login with valid credentials', async ({ page }) => {
   // test steps
 });
-```js
+```
 ---
 
 ## Bad Test Names (AVOID)
@@ -86,7 +86,7 @@ test('user sees error on invalid login', async ({ page }) => {
   await expect(page.getByText('Invalid credentials')).toBeVisible();
 });
 
-```js
+```
 
 
 ## One Assertion vs Multiple Assertions
