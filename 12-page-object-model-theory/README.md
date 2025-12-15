@@ -70,7 +70,8 @@ class LoginPage {
     await this.loginButton.click();
   }
 }
-```js
+
+
 ## How Tests Look With POM
 
 test('user can login successfully', async ({ page }) => {
