@@ -13,7 +13,7 @@ Poor structure leads to:
 - Duplicate logic
 
 ---
-
+```js
 ## Recommended Folder Structure
 tests
 ├── auth
@@ -23,7 +23,7 @@ tests
 ├── settings
 │   └── settings.spec.js
 ---
-
+```js
 ## Test File Naming Convention
 - Use `.spec.js` suffix
 - Name files based on feature
