@@ -87,7 +87,7 @@ test('user sees error on invalid login', async ({ page }) => {
 });
 
 ```js
----
+
 
 ## One Assertion vs Multiple Assertions
 - Prefer **focused assertions**
