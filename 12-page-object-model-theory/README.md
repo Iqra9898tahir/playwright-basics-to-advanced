@@ -72,13 +72,12 @@ class LoginPage {
 }
 ```js
 ## How Tests Look With POM
-```js
+
 test('user can login successfully', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.login('user', 'pass');
 });
 
-```js
 ---
 
 ## Benefits of POM (INTERVIEW)
