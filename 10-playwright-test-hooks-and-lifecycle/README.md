@@ -87,7 +87,7 @@ Used for:
 - Final cleanup
 
 ```
-```
+
 ---
 
 ## beforeEach vs beforeAll (INTERVIEW)
@@ -131,4 +131,4 @@ A: No, but recommended for clean framework design.
 - Improve maintainability
 - Essential for scalable frameworks
 
-```
+
