@@ -70,15 +70,15 @@ class LoginPage {
     await this.loginButton.click();
   }
 }
-
+```
 
 ## How Tests Look With POM
-
+```
 test('user can login successfully', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await loginPage.login('user', 'pass');
 });
-
+```
 ---
 
 ## Benefits of POM (INTERVIEW)
