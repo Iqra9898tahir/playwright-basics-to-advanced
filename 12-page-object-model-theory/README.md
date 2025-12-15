@@ -34,7 +34,7 @@ Without POM:
 - Tests become clean and readable
 
 ---
-
+```js
 ## POM Conceptual Structure
 tests
 ├── login.spec.js
@@ -42,6 +42,7 @@ pages
 ├── login.page.js
 ├── dashboard.page.js
 ---
+```
 
 ## What Goes Inside a Page Object?
 A page object should contain:
