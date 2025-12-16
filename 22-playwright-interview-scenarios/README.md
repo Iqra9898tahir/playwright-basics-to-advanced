@@ -1,164 +1,69 @@
-1. Locator Strategy in a Large Application
-Scenario
 
+## 1. Locator Strategy in a Large Application
+
+### Scenario
 You are automating a large e-commerce application.
 The UI changes frequently and tests break often.
 
-What would you do?
+### Solution
+- Prefer `data-test-id` attributes
+- Avoid XPath and deeply nested CSS selectors
+- Use role-based locators (`getByRole`)
+- Define a locator priority strategy for the team
 
-Prefer data-test-id attributes for all critical elements
+### Why This Works
+- Locators remain stable despite UI changes
+- Tests become easier to maintain
+- Reduces flaky failures
 
-Avoid XPath and deeply nested CSS selectors
+---
 
-Use role-based locators for accessibility and stability
+## 2. Parallel Execution Failures in CI
 
-Define a locator strategy guideline for the team
+### Scenario
+Tests pass locally but fail randomly in CI when executed in parallel.
 
-Why this works in real projects
+### Debugging Approach
+- Check for shared state across tests
+- Ensure each test uses its own browser context
+- Reduce workers temporarily to isolate failures
+- Use Playwright traces and videos
 
-Locators become independent of UI changes
-
-Tests remain stable even when layouts change
-
-Collaboration with developers improves automation quality
-
-2. Parallel Execution Failures in CI
-Scenario
-
-Tests pass locally but fail randomly in CI when run in parallel.
-
-How would you debug and fix this?
-
-Check for shared state (global variables, reused contexts)
-
-Ensure each test runs in its own browser context
-
-Reduce workers temporarily to isolate the issue
-
-Use Playwright traces and videos for debugging
-
-Real-world insight
-
+### Real-World Insight
 Most CI flakiness is caused by poor test isolation, not Playwright itself.
 
-3. Authentication Handling in Enterprise Applications
-Scenario
+---
 
-The application uses MFA and login is slow.
-Logging in before every test increases execution time.
+## 3. Authentication Handling in Enterprise Applications
 
-Best approach
+### Scenario
+Login involves MFA and takes significant time.
+Logging in before every test slows execution.
 
-Perform login once
+### Best Practice
+- Perform login once
+- Save authenticated storage state
+- Reuse it across tests
+- Avoid repeated UI logins
 
-Save authenticated storage state
+### Benefit
+- Faster test execution
+- More stable tests
+- Reduced dependency on external systems
 
-Reuse it across tests
+---
 
-Avoid repeated UI logins
+## 4. Backend API Instability Affecting UI Tests
 
-Why this is important
+### Scenario
+UI tests fail because backend APIs are unreliable.
 
-Faster execution
+### Strategy
+- Mock API responses where possible
+- Intercept network requests
+- Validate UI behavior independently
 
-More stable tests
-
-Less dependency on external authentication systems
-
-4. Backend API Instability Affecting UI Tests
-Scenario
-
-UI tests fail because backend APIs are unstable.
-
-What strategy would you use?
-
-Mock API responses where possible
-
-Intercept network calls
-
-Validate UI behavior independently
-
-Key principle
-
+### Key Principle
 UI tests should validate UI behavior, not backend reliability.
 
-5. Handling Dynamic Elements in Modern SPAs
-Scenario
-
-Elements appear after API calls, causing flaky tests.
-
-Correct approach
-
-Avoid waitForTimeout()
-
-Rely on Playwright’s auto-waiting
-
-Wait for specific UI conditions
-
-Use expect() assertions with retries
-
-Why this works
-
-Reduces flakiness
-
-Makes tests more deterministic
-
-6. Optimizing Test Execution for Large Suites
-Scenario
-
-Your project has over 1,000 Playwright tests.
-
-How do you optimize execution?
-
-Split tests using projects
-
-Separate smoke tests from regression tests
-
-Enable retries only in CI
-
-Use parallel execution wisely
-
-7. Debugging Tests That Fail Only in Headless Mode
-Scenario
-
-A test passes locally but fails in headless execution.
-
-Debugging steps
-
-Run tests in headed mode locally
-
-Enable Playwright trace viewer
-
-Capture screenshots and videos
-
-Check viewport and timing differences
-
-8. Page Object Model (POM) Design Issues
-Scenario
-
-Page Objects are growing very large and hard to maintain.
-
-How would you refactor?
-
-Split pages into components
-
-Keep Page Objects action-focused
-
-Avoid assertions inside Page Objects
-
-Move validations to test files
-
-9. CI/CD Pipeline Failures
-Scenario
-
-Playwright tests are flaky and slow in CI pipelines.
-
-How would you improve reliability?
-
-Run in headless mode
-
-Reduce unnecessary browser launches
-
-Enable retries only in CI
-
-Analyze HTML reports and traces
+--
