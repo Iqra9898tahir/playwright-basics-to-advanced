@@ -117,3 +117,102 @@ Perfect Answer:
 Perfect Answer:
 
 “Dynamic elements — especially dynamic dropdowns and tables. I solved it using stable locators, text-based selection, proper waits, and encapsulating the logic in reusable POM functions.”
+1️⃣ Scenario: Login is required for every test. How will you optimize your test execution?
+Perfect Answer:
+
+“Instead of logging in again and again, I generate a login state once using storageState, save cookies/localStorage, and reuse it for all tests. This reduces execution time and makes tests stable.”
+
+2️⃣ Scenario: A page loads slow, and your test fails because the element is not yet available. What do you do?
+Perfect Answer:
+
+“I avoid manual waits. Instead, I rely on Playwright auto-wait or add explicit expectations like toBeVisible() or toHaveText(). This ensures test waits for the correct state instead of using fixed sleeps.”
+
+3️⃣ Scenario: You have a table with hundreds of rows. You need to click Edit on a specific user.
+Perfect Answer:
+
+“I locate all rows, loop through them, match the name cell, and perform the action inside the same row. This is dynamic and works even if the row position changes.”
+
+4️⃣ Scenario: Dynamic dropdown where values appear based on typing.
+Perfect Answer:
+
+“I type into the input, wait for dropdown options to appear, and click based on visible text — never index. This avoids flakiness when the order changes.”
+
+5️⃣ Scenario: Test cases fail randomly on CI but work fine locally.
+Perfect Answer:
+
+“I check for unstable locators, missing waits, network delays, animation timing, or environment differences. I add strict locators, proper waits, retry logic, and check network mocking if backend is unstable.”
+
+6️⃣ Scenario: You need to test file upload and download.
+Perfect Answer:
+
+“For upload, I use setInputFiles for HTML input or fileChooser event for OS popups. For downloads, I use page.waitForEvent('download') to capture and verify the file name.”
+
+7️⃣ Scenario: There is a popup (modal) that blocks the page after clicking a button.
+Perfect Answer:
+
+“If it’s HTML modal, I treat it as normal DOM element and wait for it to be visible. If it's JS alert, I use Playwright dialog event to accept/dismiss.”
+
+8️⃣ Scenario: After clicking a link, a new tab opens. How do you handle it?
+Perfect Answer:
+
+“I use context.waitForEvent('page') to capture the new tab, then interact with that tab while still keeping access to the original page.”
+
+9️⃣ Scenario: You need to verify an API response before UI interaction.
+Perfect Answer:
+
+“I use Playwright’s request fixture to send API calls, validate the response, then continue UI actions. This ensures backend is stable before UI testing.”
+
+1️⃣0️⃣ Scenario: You need to search for a product in an e-commerce app and validate the price.
+Perfect Answer:
+
+“I type the product name, wait for filtered results, loop through product cards, match product name, and extract the price from the same card/container.”
+
+1️⃣1️⃣ Scenario: A test requires random data (email, username).
+Perfect Answer:
+
+“I generate dynamic test data using libraries like faker or custom functions. This prevents conflicts and testing with duplicate data.”
+
+1️⃣2️⃣ Scenario: You must run tests in parallel but they overwrite each other’s data.
+Perfect Answer:
+
+“I ensure tests are independent — separate test users, isolated data, and no shared state. I use worker-based fixtures to avoid collisions.”
+
+1️⃣3️⃣ Scenario: You must automate complex mouse actions (drag-drop, hover, right-click).
+Perfect Answer:
+
+“I use Playwright’s built-in mouse and keyboard APIs. They support dragTo, hover, and modifiers like Ctrl or Shift for complex interactions.”
+
+1️⃣4️⃣ Scenario: A UI element has dynamic ID that changes every refresh.
+Perfect Answer:
+
+“I never use dynamic IDs. Instead, I use stable locators such as getByRole, text(), placeholder, or parent-child relationship.”
+
+1️⃣5️⃣ Scenario: Page has infinite scroll. How do you test it?
+Perfect Answer:
+
+“I use page.evaluate to scroll to the bottom repeatedly until all items load or a target item appears. Then I interact with the item.”
+
+1️⃣6️⃣ Scenario: Need to mock an API to test frontend without backend.
+Perfect Answer:
+
+“I intercept the API using route(), mock JSON response, and test how UI behaves under various backend conditions like success, error, or delay.”
+
+1️⃣7️⃣ Scenario: Validate error messages when API returns 500.
+Perfect Answer:
+
+“I mock the API with route() and force it to return a 500 status. Then I verify that frontend shows the correct error message.”
+
+1️⃣8️⃣ Scenario: Need to screenshot, record video, trace test steps.
+Perfect Answer:
+
+“Playwright provides trace viewer, screenshots, and video recording built-in. I enable these in playwright.config for debugging failures.”
+
+1️⃣9️⃣ Scenario: A button is disabled until form is valid.
+Perfect Answer:
+
+“I fill required fields, then assert that the button becomes enabled using toBeEnabled(). This validates validation rules.”
+
+2️⃣0️⃣ Scenario: You need to run Playwright in CI (GitHub Actions, Jenkins).
+Perfect Answer:
+
+“I install browsers using npx playwright install, run tests headless, set up env variables, and upload trace/videos as pipeline artifacts for debugging.”
