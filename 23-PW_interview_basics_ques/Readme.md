@@ -443,3 +443,168 @@ based on actual automation challenges.
 > Interviewers care more about **how you think**
 > than about syntax.
 > Always explain problem → approach → reasoning.
+# Playwright Advanced Interview Questions (Missing/High-Priority)
+
+This README covers **advanced Playwright concepts**, **scenario-based questions**, and **framework-level understanding** that are often asked in interviews but were not covered in previous notes.
+
+---
+
+## Part 1: Core Advanced Concepts
+
+---
+
+### 1️⃣ Browser vs Context vs Page
+
+**Spoken Interview Answer:**  
+> Browser is the actual browser instance.  
+> Context is an isolated session (cookies, storage) — each test runs in its own context.  
+> Page is a single tab in that context.  
+> Using separate contexts ensures test isolation and allows parallel execution safely.
+
+---
+
+### 2️⃣ How does Playwright ensure test isolation?
+
+**Spoken Interview Answer:**  
+> Each test runs in its own **browser context**, so cookies, localStorage, and cache do not leak between tests.  
+> This allows reliable parallel execution and prevents flaky results.
+
+---
+
+### 3️⃣ How do retries work in Playwright?
+
+**Spoken Interview Answer:**  
+> Retries can be configured per test or globally in `playwright.config`.  
+> Usually enabled in CI to handle transient issues.  
+> Retries are not a fix for flaky tests — they only mask temporary failures.
+
+---
+
+### 4️⃣ How do you run specific tests / tags / grep?
+
+**Spoken Interview Answer:**  
+> Use `test.only` to run a single test, `test.describe` to group tests, or `--grep` to run tests matching a pattern.  
+> This is useful for smoke tests, regression suites, or CI pipelines.
+
+---
+
+### 5️⃣ Difference between `page.locator()` and `page.$()`
+
+**Spoken Interview Answer:**  
+> `page.locator()` returns a **Locator**, which supports **auto-waiting** and retries.  
+> `page.$()` returns an **ElementHandle**, which does **not** auto-wait.  
+> Using Locator is recommended for stable tests.
+
+---
+
+## Part 2: Fixtures & Test Data
+
+---
+
+### 6️⃣ Global Setup vs Fixtures – when to use what?
+
+**Spoken Interview Answer:**  
+> Global setup runs once per test run — e.g., login, environment setup.  
+> Fixtures run per test or per worker — e.g., browser page, test data injection.  
+> Both help avoid repeating setup code.
+
+---
+
+### 7️⃣ How do you handle test data management?
+
+**Spoken Interview Answer:**  
+> I use static test data for predictable scenarios.  
+> For dynamic tests, I generate data using libraries like Faker.  
+> Environment-specific test data is managed using config or `.env` files.
+
+---
+
+## Part 3: Debugging & Flaky Tests
+
+---
+
+### 8️⃣ How do you debug flaky tests using Trace Viewer?
+
+**Spoken Interview Answer:**  
+> Open the trace, replay the steps, check locator resolution, network calls, and timing issues.  
+> This helps identify whether flakiness comes from locators, waits, or environment issues.
+
+---
+
+### 9️⃣ What happens if one worker crashes?
+
+**Spoken Interview Answer:**  
+> Only that worker’s tests fail.  
+> Other workers continue independently.  
+> Retried tests and isolation prevent cascading failures.
+
+---
+
+### 🔟 How do you combine API and UI testing in Playwright?
+
+**Spoken Interview Answer:**  
+> I create test data using APIs, validate via UI, then clean up via API.  
+> This ensures UI tests do not fail due to unstable backend data.
+
+---
+
+### 1️⃣1️⃣ How do you validate API schema or response structure?
+
+**Spoken Interview Answer:**  
+> I validate status codes, response keys, and data types using assertions.  
+> Can also mock API responses to simulate backend scenarios.
+
+---
+
+## Part 4: Trick / Follow-up Questions
+
+---
+
+### 1️⃣2️⃣ Why not use `waitForTimeout()`?
+
+**Spoken Interview Answer:**  
+> Fixed waits are prone to flakiness.  
+> Always use **auto-waits** or explicit expectations like `toBeVisible()` or `toHaveText()`.
+
+---
+
+### 1️⃣3️⃣ What do you do if auto-wait is not enough?
+
+**Spoken Interview Answer:**  
+> Use explicit locators with conditions, or wait for network calls and DOM stability.  
+> Avoid adding arbitrary sleep times.
+
+---
+
+### 1️⃣4️⃣ Can Playwright test mobile?
+
+**Spoken Interview Answer:**  
+> Yes, by emulating devices with viewport and user-agent settings.  
+> Supports mobile web testing, but not real devices.
+
+---
+
+### 1️⃣5️⃣ When would you NOT automate a test?
+
+**Spoken Interview Answer:**  
+> One-time flows, highly unstable UI, or tests with low ROI.  
+> Always focus on stable, repeatable, and critical scenarios.
+
+---
+
+## Part 5: Framework Design / Scalability
+
+---
+
+### 1️⃣6️⃣ How do you design a scalable Playwright framework?
+
+**Spoken Interview Answer:**  
+> I use **Page Object Model** for locators and reusable actions.  
+> Maintain separation of **tests, pages, utilities, and test data**.  
+> Use **fixtures** for login, environment setup, and context creation.  
+> Configure **parallel execution, retries, and reporting**.  
+> Use **storageState** for login reuse.  
+> This makes the framework **clean, maintainable, and scalable**.
+
+---
+
