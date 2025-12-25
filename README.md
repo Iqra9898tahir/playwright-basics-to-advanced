@@ -4,7 +4,7 @@ This repository contains a **Playwright end-to-end automation framework** using 
 It is structured for best practices, interview demonstrations, and real-world test automation scenarios.
 
 ---
-
+```
 ## 📁 Folder Structure
 
 Playwright_automation
@@ -17,3 +17,4 @@ Playwright_automation
 ├── package.json
 ├── package-lock.json
 └── node_modules
+```
