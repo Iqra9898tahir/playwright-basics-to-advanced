@@ -1,7 +1,4 @@
-# Playwright Automation Framework
-
-This repository contains a **Playwright end-to-end automation framework** using **JavaScript**.  
-It is structured for best practices, interview demonstrations, and real-world test automation scenarios.
+# Playwright Folder Structure
 
 ---
 ```
