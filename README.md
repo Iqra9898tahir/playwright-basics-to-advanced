@@ -97,3 +97,4 @@ Playwright_automation
 
    ## fixtures
    Fixtures manage test lifecycle by providing isolated, reusable, auto-cleaned resources like browser, context, and page, improving test reliability and maintainability.
+   Fixtures are Playwright’s way of managing test setup and teardown automatically, ensuring isolation and reusability.
