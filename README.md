@@ -94,3 +94,6 @@ Playwright_automation
    ```bash
    npm install
    npx playwright install
+
+   ## fixtures
+   Fixtures manage test lifecycle by providing isolated, reusable, auto-cleaned resources like browser, context, and page, improving test reliability and maintainability.
