@@ -118,3 +118,130 @@ page.goto: Navigation timeout exceeded
 ## 6️⃣ Strict Mode Violation
 
 ### Terminal
+Strict mode violation: locator resolved to multiple elements
+
+
+### Meaning
+- Locator too generic
+
+### Trace helps
+- Shows all matched elements
+- Helps refine locator strategy
+
+---
+
+## 7️⃣ Target Page / Context Closed
+
+### Terminal
+Target page, context or browser has been closed
+
+### Real causes
+- App crash
+- Unexpected redirect
+- Test ended early
+
+### Trace shows
+- When page closed
+- Console errors
+
+---
+
+## 8️⃣ Execution Context Destroyed
+
+### Terminal
+Execution context was destroyed
+
+### Happens when
+- Page navigates during interaction
+- SPA route change
+
+### Trace shows
+- Navigation timing issue
+
+---
+
+## 9️⃣ Assertion Failed
+
+### Terminal
+Expected string to contain "Success"
+Received ""
+
+
+### What terminal lacks
+- Why text empty?
+- Element hidden?
+- API delay?
+
+### Trace reveals
+- UI state at assertion time
+
+---
+
+## 🔟 Network Request Failed
+
+### Terminal
+net::ERR_FAILED
+
+### Possible causes
+- Backend issue
+- CORS
+- Test environment unstable
+
+### Trace gives
+- Request/response status
+- Failed API endpoints
+
+---
+
+## 1️⃣1️⃣ Child Window / Popup Not Found
+
+### Terminal
+waiting for event "page" timed out
+
+### Real reasons
+- Click didn’t open new tab
+- Wrong locator
+- Popup blocked
+
+### Trace shows
+- Click action execution
+- Whether new page opened
+
+---
+
+## 1️⃣2️⃣ Flaky Tests (CI Only Failures)
+
+### Terminal
+Timeout exceeded (fails only in CI)
+
+### Almost always due to
+- Timing issues
+- Slow network
+- Test data dependency
+
+### Trace is mandatory
+- CI behavior replay
+- Root cause identification
+
+---
+
+## 🔍 How Professionals Debug Failures
+
+1. Read terminal error → identify failed step
+2. Open trace → go to failed action
+3. Inspect previous step DOM
+4. Check network & console
+5. Decide:
+   - Test issue?
+   - App bug?
+   - Environment issue?
+
+---
+
+## 🚦 Trace Best Practices
+
+### Recommended configuration
+```js
+use: {
+  trace: 'retain-on-failure'
+}
